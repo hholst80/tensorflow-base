@@ -72,11 +72,14 @@ RUN pip install $TF_BINARY_URL
 
 # Install ALE
 
+RUN apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && apt-get clean
+
 RUN git clone https://github.com/mgbellemare/Arcade-Learning-Environment && \
     cd Arcade-Learning-Environment && \
-    cmake . && \
-    make -j8 && \
-    python setup.py build && \
-    python setup.py install && \
+    mkdir build && cd build && \
+    cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON .. && \
+    make -j 4 && \
+    cd .. && \
+    pip install . && \
     cd .. && \
     rm -rf Arcade-Learning-Environment
