@@ -81,3 +81,18 @@ RUN git clone https://github.com/mgbellemare/Arcade-Learning-Environment && \
     pip install . && \
     cd .. && \
     rm -rf Arcade-Learning-Environment
+
+# Install VNC
+
+RUN apt-get install -y xserver-xorg-video-dummy x11vnc
+
+ADD Xwrapper.config /etc/X11/Xwrapper.config
+ADD Xdummy /usr/local/bin/
+
+# Expose ports
+
+EXPOSE 5900 6006
+
+# Start bash
+
+CMD [ "/bin/bash" ]

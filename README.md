@@ -12,3 +12,7 @@ or without cache,
 
     docker login
     docker push frostbitelabs/tensorflow-base
+
+# Run VNC from container
+
+    docker run -it --rm -p 5900:5900 frostbitelabs/tensorflow-base x11vnc -xdummy
