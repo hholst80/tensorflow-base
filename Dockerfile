@@ -78,10 +78,11 @@ RUN apt-get install -y xserver-xorg-video-dummy x11vnc
 
 ADD Xwrapper.config /etc/X11/Xwrapper.config
 ADD Xdummy /usr/local/bin/
+ADD jupyter_notebook_config.py /root/.jupyter/
 
 # Expose ports
 
-EXPOSE 5900 6006
+EXPOSE 5900 6006 8888
 
 # Start bash
 
