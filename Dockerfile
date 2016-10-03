@@ -55,9 +55,10 @@ RUN conda install -y -c https://conda.binstar.org/menpo opencv3 && apt-get insta
 
 # Install TensorFlow
 
-ENV TF_BINARY_URL https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
+ENV TENSORFLOW_VERSION 0.11.0rc0
+ENV TF_BINARY_URL https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp35-cp35m-linux_x86_64.whl
 
-RUN pip install $TF_BINARY_URL
+RUN pip --no-cache-dir install $TF_BINARY_URL
 
 # Install ALE
 
