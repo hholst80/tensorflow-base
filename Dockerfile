@@ -24,7 +24,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
 
 # Setup our conda environment
 
@@ -47,7 +47,7 @@ RUN apt-get install -y \
     && \
     apt-get clean
 
-RUN pip install gym[atari]
+RUN pip install --no-cache-dir gym[atari]
 
 # Install OpenCV (needed by some of our environments).
 
@@ -68,17 +68,21 @@ RUN git clone https://github.com/mgbellemare/Arcade-Learning-Environment && \
     cd Arcade-Learning-Environment && \
     cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON . && \
     make -j 4 && \
-    pip install . && \
+    pip install --no-cache-dir . && \
     cd .. && \
     rm -rf Arcade-Learning-Environment
 
 # Install VNC
 
-RUN apt-get install -y xserver-xorg-video-dummy x11vnc
+RUN apt-get install -y xserver-xorg-video-dummy x11vnc && apt-get clean
 
 ADD Xwrapper.config /etc/X11/Xwrapper.config
 ADD Xdummy /usr/local/bin/
 ADD jupyter_notebook_config.py /root/.jupyter/
+
+# Install OpenBLAS
+
+RUN apt-get install -y openblas-dev
 
 # Expose ports
 
