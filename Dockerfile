@@ -82,7 +82,7 @@ ADD jupyter_notebook_config.py /root/.jupyter/
 
 # Install OpenBLAS
 
-RUN apt-get install -y openblas-dev
+RUN apt-get install -y libopenblas-dev
 
 # Expose ports
 
