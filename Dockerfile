@@ -64,7 +64,7 @@ RUN pip --no-cache-dir install $TF_BINARY_URL
 
 RUN apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && apt-get clean
 
-RUN git clone https://github.com/mgbellemare/Arcade-Learning-Environment && \
+RUN git clone --depth=1 https://github.com/mgbellemare/Arcade-Learning-Environment && \
     cd Arcade-Learning-Environment && \
     cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON . && \
     make -j 4 && \
