@@ -55,7 +55,7 @@ RUN conda install -y -c https://conda.binstar.org/menpo opencv3 && apt-get insta
 
 # Install TensorFlow
 
-ENV TENSORFLOW_VERSION 0.11.0rc0
+ENV TENSORFLOW_VERSION 0.11.0rc1
 ENV TF_BINARY_URL https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp35-cp35m-linux_x86_64.whl
 
 RUN pip --no-cache-dir install $TF_BINARY_URL
