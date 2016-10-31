@@ -36,6 +36,7 @@ RUN conda install -y \
     scipy \
     swig \
     dnspython \
+    ruamel_yaml \
     && \
     conda clean -iltp
 
