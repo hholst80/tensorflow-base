@@ -15,6 +15,7 @@ RUN apt-get update --fix-missing && \
     apt-get install -y libopenblas-dev && \
     apt-get install -y cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev libboost-all-dev libsdl2-dev && \
     apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && \
+    apt-get install -y unzip wget && \
     apt-get clean
 
 # Install Miniconda3
@@ -27,6 +28,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
 ENV PATH /opt/conda/bin:$PATH
 
 RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir PyYAML py-doom
 
 # Setup our conda environment
 
