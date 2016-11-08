@@ -28,7 +28,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
 ENV PATH /opt/conda/bin:$PATH
 
 RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir PyYAML py-doom
+RUN pip install --no-cache-dir PyYAML
 
 # Setup our conda environment
 
@@ -52,7 +52,8 @@ RUN pip install --no-cache-dir gym[atari]
 # Install OpenCV (needed by some of our environments).
 
 RUN conda install -y -c https://conda.binstar.org/menpo opencv3 && \
-    apt-get install -y libgtk2.0-0
+    apt-get install -y libgtk2.0-0 && \
+    apt-get clean
 
 # Install TensorFlow
 
