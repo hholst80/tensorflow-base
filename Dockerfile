@@ -15,8 +15,15 @@ RUN apt-get update --fix-missing && \
     apt-get install -y libopenblas-dev && \
     apt-get install -y cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev libboost-all-dev libsdl2-dev && \
     apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && \
-    apt-get install -y unzip wget && \
+    apt-get install -y unzip wget iputils-ping && \
     apt-get clean
+
+# Install tini
+
+ENV TINI_VERSION v0.13.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
 
 # Install Miniconda3
 
