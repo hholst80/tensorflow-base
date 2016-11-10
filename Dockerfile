@@ -10,12 +10,12 @@ ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update --fix-missing && \
-    apt-get install -y build-essential ca-certificates curl git libglib2.0-0 libsm6 libxext6 libxrender1 && \
-    apt-get install -y xserver-xorg-video-dummy x11vnc && \
-    apt-get install -y libopenblas-dev && \
-    apt-get install -y cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev libboost-all-dev libsdl2-dev && \
-    apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && \
-    apt-get install -y unzip wget iputils-ping && \
+    apt-get install -y --no-install-recommends build-essential ca-certificates curl git libglib2.0-0 libsm6 libxext6 libxrender1 && \
+    apt-get install -y --no-install-recommends xserver-xorg-video-dummy x11vnc && \
+    apt-get install -y --no-install-recommends libopenblas-dev && \
+    apt-get install -y --no-install-recommends cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev libboost-all-dev libsdl2-dev && \
+    apt-get install -y --no-install-recommends libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake && \
+    apt-get install -y --no-install-recommends unzip wget iputils-ping && \
     apt-get clean
 
 # Install tini
@@ -59,7 +59,7 @@ RUN pip install --no-cache-dir gym[atari]
 # Install OpenCV (needed by some of our environments).
 
 RUN conda install -y -c https://conda.binstar.org/menpo opencv3 && \
-    apt-get install -y libgtk2.0-0 && \
+    apt-get install -y --no-install-recommends libgtk2.0-0 && \
     apt-get clean
 
 # Install TensorFlow
