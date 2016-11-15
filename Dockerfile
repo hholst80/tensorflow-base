@@ -56,6 +56,10 @@ RUN git clone --depth=1 https://github.com/mgbellemare/Arcade-Learning-Environme
 
 RUN pip install --no-cache-dir gym[atari]
 
+# Install Doom environment
+
+RUN pip install -U --no-cache-dir doom-py ppaquette-gym-doom
+
 # Install OpenCV (needed by some of our environments).
 
 RUN conda install -y -c https://conda.binstar.org/menpo opencv3 && \
